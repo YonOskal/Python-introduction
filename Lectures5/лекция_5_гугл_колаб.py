@@ -11,13 +11,13 @@ import pandas as pd
 
 df = pd.read_csv("sample_data/california_housing_train.csv")
 
-df.head(10)
+df.head(10) - "Первые 10 строк"
 
-df.tail(2)
+df.tail(2) - "вывод последний двух строк"
 
-df.shape
+df.shape - "Размер строк и столбцов"
 
-df.isnull().sum
+df.isnull().sum - "Проверка на пустою ячейку"
 
 df.dtypes
 

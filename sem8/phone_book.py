@@ -68,8 +68,23 @@ def change_row(file_name):
     res[row_number - 1]["Телефон"] = data[2]
     standart_write(file_name, res)
 
+def line_transport(file_name, target_file):
+    row_number = int(input("Введите номер строки: "))
+    r_f = read_file(file_name)
+    if 0 >= row_number < len(r_f):
+        print("Неверный номер строки")
+        return 
+    r_tf = read_file(target_file)
+    selected_row = r_f[row_number - 1]
+    r_tf.append(selected_row) 
+    standart_write(target_file, r_tf)
+    print("Строка перенесена!")
+
+    
+
 
 file_name = "phone.csv"
+target_file = "phone1.csv"
 
 def main():
     while True:
@@ -101,5 +116,8 @@ def main():
                 print("Файл не существует создайте его")
                 continue
             change_row(file_name)
-            
+        elif command == "lt":
+            if not exists(target_file):
+                create_file(target_file)
+            line_transport(file_name, target_file)
 main()
